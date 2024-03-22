@@ -1,6 +1,6 @@
-# L2-OP与Memo DA
+# Optimistic Rollup 与 Meeda
 
-Layer2中的Optimistic Rollup方案简单概括：
+Ethereum Layer2中的Optimistic Rollup方案简单概括：
 
 1. 将OP链作为执行层，所有的交易都在该链上执行。因为OP链节点更优质（少而精），因此同步与执行的速度相比于L1链如以太坊会快得多。而本质上链的原理和结构与L1没有太大区别。
 2. 但因为L2的节点少，因此其安全性或者说去中心化程度远远不及L1链。为了保证L2链上的交易安全，需要将L2链上的交易执行结果锚定到L1链上，以获取与L1链相同的安全性与可信度。而这个执行结果就是执行完交易后的状态根。
@@ -9,9 +9,9 @@ Layer2中的Optimistic Rollup方案简单概括：
 
 至此，OP方案作为Layer2的扩展方案，已经能够安全可靠的对Layer1进行扩展，提升吞吐量并降低交易费开销。但其仍存在一个问题：无法降低数据的同步开销和存储开销。原始的交易数据仍然需要提交到L1链上，L1上的全节点仍需要同步这些交易数据。即使有一些别的方案（如ERC-4337）来压缩部分交易数据，但效果仍旧有限。最直观的体现就是，这些交易数据存放在L1链上仍需要支付高昂的gas费用，尽管这些费用是字节费用而非执行费用。
 
-究其根本，还是因为Layer2-OP将以太坊L1链当作自己的DA层（Data Availability，数据可得性）。而Memo DA将数据放在链下存储，获取数据用的索引和保证数据可靠性的承诺证明放在链上存储。在保证了数据可得性的同时，也降低了链上的同步开销和存储开销，最大程度扩展区块链。且由于Memo DA是独立出来的一层，外部接入只需要使用其`get`和`submit`的接口，而保证数据安全性则依靠Memo DA层对应的挑战与验证机制，因此Memo DA的接入也非常简洁高效，可以兼容任何的Layer2链。
+究其根本，还是因为Layer2-OP将以太坊L1链当作自己的DA层（Data Availability，数据可得性）。而Meeda将数据放在链下存储，获取数据用的索引和保证数据可靠性的承诺证明放在链上存储。在保证了数据可得性的同时，也降低了链上的同步开销和存储开销，最大程度扩展区块链。且由于Meeda是独立出来的一层，外部接入只需要使用其`get`和`submit`的接口，而保证数据安全性则依靠Meeda层对应的挑战与验证机制，因此Meeda的接入也非常简洁高效，可以兼容任何的Layer2链。
 
-下面将简单介绍接入的原理，并以OP为例子介绍Memo DA的接入。
+下面将简单介绍接入的原理，并以OP为例子介绍Meeda的接入。
 
 ## 原理
 
@@ -27,13 +27,13 @@ L2锚定到L1链，以及验证相关的流程需要L2与L1之间有一层负责
 
 在`optimism`项目的源码中，有两部分与DA层相关：
 
-1. `op-batcher/batcher/driver.go`的`sendTransaction`，将交易的数据放在`txmgr`的候补交易中。交易的数据就是L2层打包的一帧（Frame）数据。此时为了接入DA层，可以通过Memo DA层的`submit`接口将交易的数据先上传到Memo，获得回执中的ID索引，随后用该ID索引替换原来的交易数据。
-2. `op-node/rollup/ derive/calldata_source.go`的`DataFromEVMTransactions`，用于取L1链上发送给`batch inbox address`的交易，并取出其`calldata`字段用于后续的执行使用。接入DA后，首先分析其交易数据的前缀（1字节），如果符合DA的格式，则将后面的数据认作为ID索引，并通过该索引到Memo DA上通过`get`接口取回对应的原始交易数据。
+1. `op-batcher/batcher/driver.go`的`sendTransaction`，将交易的数据放在`txmgr`的候补交易中。交易的数据就是L2层打包的一帧（Frame）数据。此时为了接入DA层，可以通过Meeda层的`submit`接口将交易的数据先上传到Memo，获得回执中的ID索引，随后用该ID索引替换原来的交易数据。
+2. `op-node/rollup/derive/calldata_source.go`的`DataFromEVMTransactions`，用于取L1链上发送给`batch inbox address`的交易，并取出其`calldata`字段用于后续的执行使用。接入DA后，首先分析其交易数据的前缀（1字节），如果符合DA的格式，则将后面的数据认作为ID索引，并通过该索引到Meeda上通过`get`接口取回对应的原始交易数据。
 
 这些植入对原流程的改动很小，因此易于兼容和使用。
 
-为了调用Memo DA上的`submit`和`get`接口，需要初始化一个Memo DA的client来访问DA的RPC。在`op-memo`中抽象并封装了这两个接口，并提供相应的参数用于初始化client。
+为了调用Meeda上的`submit`和`get`接口，需要初始化一个Meeda的DABackend client来访问DA的RPC。在`op-memo`中抽象并封装了这两个接口，并提供相应的参数用于初始化client。
 
-在OP相关角色的启动中也加入Memo DA的启动配置，具体为`op-node`以及`op-batcher`，需要在其启动的时候为其初始化一个Memo DA的client。
+在OP相关角色的启动中也加入Meeda的启动配置，具体为`op-node`以及`op-batcher`，需要在其启动的时候为其初始化一个Meeda的client。
 
-最后在部署流程中设置参数`OP_BATCHER_DA_RPC`和`OP_NODE_DA_RPC`指向Memo DA运行的HTTP RPC即可。
+最后在部署流程中设置参数`OP_BATCHER_DA_RPC`和`OP_NODE_DA_RPC`指向Meeda运行的HTTP RPC即可。
