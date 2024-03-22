@@ -22,7 +22,7 @@ Ethereum has also become aware of the expansion problem in recent years and has 
 
 Based on this current situation, there are currently two main solutions. The first is to optimize the storage overhead of Layer 2, such as Ethereum’s Danksharding proposal, which currently uses EIP-4844 to implement blob transactions and reduce the storage overhead of Layer 2 when relying on Ethereum as the data availability layer; the second is modular blockchain solutions, design the execution layer, consensus layer, and data availability layer separately, such as the Celestia project, which aims to simplify blockchain deployment by providing a pluggable consensus network.
 
-<img src="..\..\images/now-resolve-method.png" title="" alt="" data-align="center">
+<img src="../../images/now-resolve-method.png" title="" alt="" data-align="center">
 
 ## Meeda Solution
 
@@ -48,7 +48,7 @@ The off-chain part is responsible for storing transaction data, providing data r
 &nbsp;
 The on-chain part is responsible for ensuring data availability. It mainly records the commitment value and metadata information of transaction data, generates storage challenge information, records the data availability certificate submitted under the chain, responds to the availability fraud certificate, and incentivizes data repair.
 
-<img src="..\..\images/da-structure.png" title="" alt="" data-align="center">
+<img src="../../images/da-structure.png" title="" alt="" data-align="center">
 
 ## Meeda detailed description
 
@@ -98,7 +98,7 @@ For the verification of aggregated commitment values, we adopt multiple rounds o
 
 If through contract calculation, it is found that there is indeed wrong information in the aggregated part being questioned, then the questioner will again divide the questioned part into ten equal parts, select one part for questioning, until the individual block transaction data is finally determined, the questioner and the data The availability layer has reached a consensus on the faulty block transaction data, doubters will be rewarded, and the storage layer node that caused the data failure will be punished.
 
-<img src="..\..\images/onestepproof.png" title="" alt="" data-align="center">
+<img src="../../images/onestepproof.png" title="" alt="" data-align="center">
 
 ## z
 
