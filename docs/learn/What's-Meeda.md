@@ -100,6 +100,6 @@ If through contract calculation, it is found that there is indeed wrong informat
 
 <img src="../../images/onestepproof.png" title="" alt="" data-align="center">
 
-## z
+## Summarize
 
 Meeda provides an efficient and simple DA solution method for Ethereum Layer 2, especially Rollups, through kzg polynomial commitment technology, elliptic curve calculation, data availability sampling, erasure code multiple backup redundancy mechanism, efficient and low-cost availability guarantee on the chain, etc.
