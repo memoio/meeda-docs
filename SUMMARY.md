@@ -3,14 +3,14 @@
 * [learn](README.md)
   
   * Overview of meeda
-    
-    * [Introduction](docs/learn/What's Meeda.md)
-    
-    * DA layer
+  
+    * [Introduction](docs/learn/What's-Meeda.md)
+  
+    * [DA layer](docs/learn/DA-Layer.md)
 
 * node
   
-  * [DABackend](docs/node/How to build.md)
+  * [DABackend](docs/node/How-to-build.md)
   
   * Challenger
   
@@ -18,11 +18,13 @@
 
 * developers
   
-  * DA Layer
+  * [FileProof](docs/developers/FileProof-API.md)
   
-  * [Contracts](docs/developers/FileProof API.md)
+  * [Contracts](docs/developers/FileProof-contract-address.md)
   
-  * OP+meeda
+  * DABackend
+
+  * Challenger
 
 * [FAQ](docs/FAQ/FAQ.md)
 
