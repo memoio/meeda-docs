@@ -1,31 +1,37 @@
 # Summary
 
-* [learn](README.md)
+* [Learn](README.md)
   
-  * Overview of meeda
+  * Overview of Meeda
   
     * [Introduction](docs/learn/What's-Meeda.md)
   
     * [DA layer](docs/learn/DA-Layer.md)
 
-* node
-  
-  * [DABackend](docs/node/How-to-build.md)
-  
-  * Challenger
-  
-  * Op Node
+    * [Storage layer](docs/learn/Storage-Layer.md)
 
-* developers
+* Node
   
+  * [DABackend](docs/node/How-to-build-DABackend.md)
+  
+  * [Challenger](docs/node/How-to-build-Challenger.md)
+  
+  * [Op Node](OptimisticRollup+Meeda.md)
+
+* Developers
+  
+  * [DA layer](docs/developers/DA-Layer.md)
+
   * [FileProof](docs/developers/FileProof-API.md)
   
   * [Contracts](docs/developers/FileProof-contract-address.md)
-  
-  * DABackend
 
-  * Challenger
+  * [Detailed Description of Meeda](docs/developers/Detailed-description-of-Meeda.md)
+  
+  * [DABackend](docs/developers/DABackend-API.md)
+
+  * [Challenger](docs/developers/Challenger-API.md)
 
 * [FAQ](docs/FAQ/FAQ.md)
 
-* [community](docs/Community/resource.md)
+* [Community](docs/Community/resource.md)
