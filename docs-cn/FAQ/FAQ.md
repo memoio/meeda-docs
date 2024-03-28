@@ -18,4 +18,4 @@ Meeda是Memolabs为以太坊Layer2，尤其是Rollup推出的一种数据可用�
 
 5.How to combine Ethereum Layer2 with Meeda?
 
-具体请参考`Optimistic Rollup + Meeda`部分的内容。
+具体请参考`Developers/How to connect L2 to Meeda`部分的内容。

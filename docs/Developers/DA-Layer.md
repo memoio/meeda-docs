@@ -1,14 +1,14 @@
-# DA Layer
+# Data Availability Layer
 
-Meeda's DA layer is mainly implemented by File Proof. Next, File Proof will be explained in detail.
+Meeda's DA layer is mainly implemented by FileProof. Next, the design details of FileProof will be explained in detail for developers to discuss.
 
 ## Background
 
-Layer2 nodes upload transaction data through DABackend node, and Meeda ensures the availability of files. Layer2 nodes need to pay da-bakcend to maintain data availability services.
+Layer2 nodes upload transaction data through DABackend node, and the data availability layer of Meeda ensures the availability of files. Layer2 nodes need to pay da-bakcend to maintain data availability services.
 
 &nbsp;
 
-FileProof is the smart contract part of Meeda and acts as a decentralized regulator. The DABackend node needs to regularly submit data availability certificates to the chain. If the certificate is passed, it can be considered that the availability of the Layer2 node data is guaranteed, and the DABackend node can obtain the corresponding service fee. If it proves that the DABackend node cannot obtain the corresponding service fee, the fee will be Issued to the foundation for the development and maintenance of a more stable and reliable service platform.
+FileProof serves as Meeda's data availability layer, which is the smart contract part of Meeda, and acts as a decentralized regulator. The DABackend node needs to regularly submit data availability certificates to the chain. If the certificate is passed, it can be considered that the availability of the Layer2 node data is guaranteed, and the DABackend node can obtain the corresponding service fee. If it proves that the DABackend node cannot obtain the corresponding service fee, the fee will be Issued to the foundation for the development and maintenance of a more stable and reliable service platform.
 
 &nbsp;
 

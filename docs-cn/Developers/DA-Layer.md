@@ -1,12 +1,12 @@
 # 数据可用性（DA）层
 
-Meeda的DA层主要由File Proof实现。接下来将具体讲解File Proof。
+Meeda的DA层主要由FileProof实现。接下来将具体讲解FileProof的设计细节，以供开发者探讨。
 
 ## 背景
 
-Layer2节点经过DABackend节点上传文件，Meeda保证文件的可用性。Layer2节点需要向DABackend节点付费，以维持数据可用性服务。
+Layer2节点经过DABackend节点上传文件，Meeda的DA层保证文件的可用性。Layer2节点需要向DABackend节点付费，以维持数据可用性服务。
 
-FileProof是Meeda的智能合约部分，充当去中心化的监管者。DABackend节点需要定期往链上提交数据可用性证明，证明通过则可以认为Layer2节点数据的可用性得到保障，DABackend节点从而可以获得相应的服务费用，证明失DABackend节点无法获取相应的服务费用，该笔费用将发放给基金会，用于开发维护更加稳定可靠的服务平台。
+FileProof作为Meeda的数据可用性层，它是Meeda的智能合约部分，充当去中心化的监管者。DABackend节点需要定期往链上提交数据可用性证明，证明通过则可以认为Layer2节点数据的可用性得到保障，DABackend节点从而可以获得相应的服务费用，证明失DABackend节点无法获取相应的服务费用，该笔费用将发放给基金会，用于开发维护更加稳定可靠的服务平台。
 
 为了减少数据可用性证明的开销、提高数据可用性证明的效率，FileProof从Layer2中Optimistic Rollup获得灵感，实现了适用于文件可用性证明的乐观验证和多轮交互式欺诈证明方案。并且利用KZG多项式承诺技术，使得验证方式高效且低成本。从而提供一种简洁高效、低成本、可扩展性强、去中心化的DA解决方案。
 

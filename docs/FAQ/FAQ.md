@@ -18,4 +18,4 @@ Meeda is a data availability solution launched by Memolabs for Ethereum Layer 2,
 
 5.How to combine Ethereum Layer2 with Meeda?
 
-For details, please refer to the `Optimistic Rollup + Meeda` section for details.
+For details, please refer to the `Developers/How to connect L2 to Meeda` section for details.

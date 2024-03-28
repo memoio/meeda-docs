@@ -1,18 +1,6 @@
 # resource
 
-Meeda is a project created by Memolabs to provide data availability for Ethereum Layer2. Contains on-chain smart contract logic and off-chain client logic.
-
-## contract
-
-[FileProof](http://132.232.87.203:8088/did/did-solidity/tree/memoda)
-
-## contract interaction SDK
-
-[go-fileproof](http://132.232.87.203:8088/did/go-did)
-
-## client
-
-[da-backend](http://132.232.87.203:8088/middleware/backend/tree/da-ljt)
+Meeda is a project created by Memolabs to provide data availability for Ethereum Layer2. Contains on-chain smart contract logic and off-chain client logic.Below are some of our resource links, welcome to communicate with us.
 
 ## contact us
 
