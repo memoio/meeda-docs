@@ -1,6 +1,8 @@
 # FileProof API
 
-### 1. addFile
+FileProof is the contract implementation of Meeda DA layer.
+
+## 1. addFile
 
 `function addFile(bytes32[4] memory commitment, uint64 sizeByte, uint256 start, uint256 end, bytes memory credential)`
 
@@ -10,7 +12,7 @@ The account adds file commitment and other metadata information to the contract 
 
 **Notice：**
 
-Before calling this method, the account needs to `approve` the corresponding fee of the FileProof contract account. The fee price is: sizeByte*(end-start)*price.
+Before calling this method, the account needs to `approve` the corresponding fee of the FileProof contract account. The fee price is: `sizeByte*(end-start)*price`.
 
 **Parameters：**
 
@@ -30,7 +32,7 @@ credential - File upload credentials showing that the file was indeed uploaded t
 
 `event Transfer(address indexed from, address indexed to, uint256 value);`
 
-### 2. genRnd
+## 2. genRnd
 
 `function genRnd()`
 
@@ -48,7 +50,7 @@ Effective pseudo-random numbers can only be generated if called at the right tim
 
 `event NoProofs(uint256 oldLast, uint256 newLast, uint256 missedProfit);`
 
-### 3. submitProof
+## 3. submitProof
 
 `function submitProof(bytes32 _rnd, bytes32[4] memory _Cn, ProofInfo memory _Pn)`
 
@@ -92,7 +94,7 @@ struct ProofInfo {
 
 `event Transfer(address indexed from, address indexed to, uint256 value);`
 
-### 4. doChallenge
+## 4. doChallenge
 
 `function doChallenge(uint8 _chalIndex)`
 
@@ -116,7 +118,7 @@ Before initiating a challenge, the challenger needs to `approve` the FileProof c
 
 `event Transfer(address indexed from, address indexed to, uint256 value);`
 
-### 5. responseChal
+## 5. responseChal
 
 `function responseChal(bytes32[4][10] memory _cns)`
 
@@ -138,7 +140,7 @@ If the response to the challenge fails (that is, the _cns aggregation cannot get
 
 `event Transfer(address indexed from, address indexed to, uint256 value);`
 
-### 6. oneStepProve
+## 6. oneStepProve
 
 `function oneStepProve(bytes32[4][] memory _commitments)`
 
@@ -162,7 +164,7 @@ If the response to the challenge fails (that is, the _commitments aggregation ca
 
 `event Transfer(address indexed from, address indexed to, uint256 value);`
 
-### 7. endChallenge
+## 7. endChallenge
 
 `function endChallenge()`
 
@@ -182,7 +184,7 @@ If the submitter does not respond to the challenge in time, the `Fraud` event wi
 
 `event Transfer(address indexed from, address indexed to, uint256 value);`
 
-### 8. withdrawMissedProfit
+## 8. withdrawMissedProfit
 
 `function withdrawMissedProfit()`
 
@@ -194,7 +196,7 @@ Any account can call this method to transfer the missed profits to the foundatio
 
 `event Transfer(address indexed from, address indexed to, uint256 value);`
 
-### 9. alterSetting
+## 9. alterSetting
 
 `function alterSetting(IFileProof.SettingInfo memory si, bytes[5] memory signs)`
 
@@ -231,7 +233,7 @@ struct SettingInfo {
 
 `event AlterSetting(SettingInfo si);`
 
-### 10. selectFiles
+## 10. selectFiles
 
 `function selectFiles(uint256 i) external view returns (bytes32[4] memory commitment)`
 
@@ -243,7 +245,7 @@ After a valid random number is generated in each period, the contract will selec
 
 The total number of selected files is determined by `SettingInfo.chalSum`.
 
-### 11. getCommit
+## 11. getCommit
 
 `function getCommit(uint256 i) external view returns (uint256 sum, bytes32[4] memory commitment)`
 
@@ -251,7 +253,7 @@ The total number of selected files is determined by `SettingInfo.chalSum`.
 
 According to the serial number, get the total number of uploaded files in the contract and the corresponding commitment value.
 
-### 12. getFileInfo
+## 12. getFileInfo
 
 `function getFileInfo(bytes memory commit) external view returns (uint64 index, uint256 expiration)`
 
@@ -259,7 +261,7 @@ According to the serial number, get the total number of uploaded files in the co
 
 According to the file commitment value, obtain the file serial number and expiration time.
 
-### 13. getProofInfo
+## 13. getProofInfo
 
 `function getProofInfo() external view returns (bytes32 y)`
 
@@ -271,7 +273,7 @@ Get certification information for the current period.
 
 Historical proof information and current complete proof information can be obtained by monitoring events.
 
-### 14. getVerifyInfo
+## 14. getVerifyInfo
 
 `function getVerifyInfo() external view returns (bytes32 rnd, bool lock, uint256 last)`
 
@@ -283,7 +285,7 @@ Get verification information for the current period.
 
 Historical verification information, as well as current complete verification information, can be obtained by monitoring events.
 
-### 15. getProfitInfo
+## 15. getProfitInfo
 
 `function getProfitInfo() external view returns (uint256 pendingProfit, uint256 missedProfit, uint256 finalExpire)`
 
@@ -295,7 +297,7 @@ Get earnings information for the current period.
 
 Historical income information can be obtained by monitoring events.
 
-### 16. getChallengeInfo
+## 16. getChallengeInfo
 
 `function getChallengeInfo() external view returns (uint8 chalStatus, address challenger, uint8 chalIndex, uint256 startIndex, uint256 chalLength)`
 
@@ -307,7 +309,7 @@ Get challenge information for the current period.
 
 Historical challenge information and current complete challenge information can be obtained by monitoring events.
 
-### 17. getSettingInfo
+## 17. getSettingInfo
 
 `function getSettingInfo() external view returns (uint32 interval, uint32 period, uint32 chalSum, uint32 respondTime, uint64 price, address submitter, address receiver, address foundation, uint8 chalRewardRatio, uint256 chalPledge)`
 
@@ -319,7 +321,7 @@ Get the current configuration information.
 
 Historical configuration information can be obtained by monitoring events.
 
-### 18. getVK
+## 18. getVK
 
 `function getVK() external view returns (bytes32[8] memory vk)`
 

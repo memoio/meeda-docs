@@ -1,43 +1,30 @@
 # How to Connect L2 to Meeda
 
-## Overview of L2
+Meeda is a data availability solution suitable for Ethereum Layer 2. This article will explain in detail how L2 connects to Meeda.
 
-Here we take the Optimistic Rollup solution in Layer2 as an example to briefly summarize L2:
+The L2 chain is essentially the same as the L1 chain. After the virtual machine executes the transaction, the results are packaged into blocks and uploaded to the chain by consensus. The reason why the execution is faster and the gas overhead is lower is mainly because there are fewer and more refined nodes. Gasfee can be reduced by adjusting the gas calculation parameters. Because the access of DA will not interfere with the operation of the chain itself, neither the L1 nor L2 chains need to make any changes.
 
-1. The OP chain is used as the execution layer, and all transactions are executed on this chain. Because the OP chain nodes are of higher quality (fewer and more refined), the synchronization and execution speed will be much faster compared to L1 chains such as Ethereum. In essence, the principle and structure of the chain are not much different from L1.
-2. However, because L2 has fewer nodes, its security or decentralization is far less than that of the L1 chain. In order to ensure the security of transactions on the L2 chain, the transaction execution results on the L2 chain need to be anchored to the L1 chain to obtain the same security and credibility as the L1 chain. And this execution result is the state root after the transaction is executed.
-3. Although the L2 state root anchored to the L1 chain can be considered to have been confirmed and can no longer be changed, it is still unknown whether the L2 root is a valid and honest state root, and malicious nodes can upload information that is beneficial to themselves. or a tampered state root. In order to ensure the validity of the root, L2-OP adopts the fault-proof method to punish malicious nodes and reward challenging nodes by submitting proofs. This includes optimistic assumptions (there will be nodes for verification during the challenge cycle), sampling verification (2D-RScode to improve verification efficiency) and other details that will not be repeated.
-4. The final key issue is **data availability**. If the transaction data on L2 is withheld by the node, even if there is a fault-proof verification mechanism, there is no original transaction data to verify and challenge fraud. In order to ensure that the data is available, the OP's approach is to package a large block of L2 transactions, and finally submit an L1 transaction to the L1 chain. At this time, the L2 transaction data is stored in the `calldata` field of the L1 transaction. This not only ensures that the data copy is on the L1 chain, and any node can obtain the data to verify L2 without the problem of data retention; it also avoids the execution overhead of the L1 chain, because these `calldata` only upload the data chain and does not participate in execution. The actual execution of the transactions corresponding to these data is on the L2 chain.
+When L2 connects to L1, it needs to deploy a series of contracts to complete the message delivery, which is also the core of L2. After deployment, these contracts have fixed addresses and corresponding events that are used to identify transactions related to interactions of L1 and L2. Since the access of the DA layer only needs to modify the content of the delivered message, but does not affect the delivery process and method, there is no need to change this part.
 
-&nbsp;
+The anchoring of L2 to the L1 chain and the verification-related processes require a layer of interactive roles between L2 and L1. These roles are mainly divided into two, one is `batcher` and the other is `node`. The former mainly packages and stores L2 transaction data on the L1 chain, while the latter mainly reads the data recorded on the L1 chain to obtain transaction content that can be executed on the L2. Obviously these two parts are related to the DA layer, or in the L2 solution, these two roles themselves are responsible for DA-related content, and most of them have independently developed relevant interface methods. DA access requires changes to the related processes of these two parts.
 
-At this point, the OP solution, as an expansion solution for Layer 2, can safely and reliably expand Layer 1, improve throughput and reduce transaction fee overhead. But there is still a problem: it cannot reduce data synchronization overhead and storage overhead. The original transaction data still needs to be submitted to the L1 chain, and the full nodes on L1 still need to synchronize these transaction data. Even if there are some other solutions (such as ERC-4337) to compress some transaction data, the effect is still limited. The most intuitive manifestation is that these transaction data still require high gas fees to be stored on the L1 chain, although these fees are byte fees rather than execution fees.
+The remaining challenge roles, monitoring and proposers are related to L2 anchoring and security. Please refer to the op for details and will not be detailed here.
 
-&nbsp;
-
-The fundamental reason is that Layer2-OP regards the Ethereum L1 chain as its own DA layer (Data Availability). Meeda stores data off-chain, and stores the index used to obtain the data and the proof of commitment to ensure data reliability on-chain. While ensuring data availability, it also reduces synchronization overhead and storage overhead on the chain, maximizing the expansion of the blockchain. And because Meeda is an independent layer, external access only needs to use its `get` and `submit` interfaces, and ensuring data security relies on the corresponding challenge and verification mechanism of the Meeda layer, so the access to Meeda is also very Simple and efficient, compatible with any Layer2 chain.
+Therefore, to connect Rollup to Meeda, you only need to change the logic of the `batcher` and `node` modules and apply it to the `submit` and `get` methods of Meeda.
 
 ## Connect to Meeda
 
 The following will briefly introduce the principle of access, and use the OP as an example to introduce Meeda access.
 
-&nbsp;
-
 Prerequisite: There is a functioning Layer2, and Layer1 is acting as the DA layer, storing data from Layer2 through `calldata` or `blob`.
 
-&nbsp;
-
 Quoting DA's client package: `https://github.com/memoio/go-da-client`
-
-&nbsp;
 
 Access method:
 
 1. After introducing the package into the project, you can create a module to initialize the client, call the interface, and specify the Meeda identification code.
 2. In the module responsible for reading the `calldata` or `blob` data of L1 and restoring it into transaction data that can be executed by L2 (such as `op-node` in op-stack), add the module built in step 1. When the Meeda identification code is read, the client goes to the Meeda layer to obtain the original transaction data, and the subsequent process remains unchanged.
 3. In the module responsible for packaging L2 transaction data into the L1 layer (such as `op-batcher` in op-stack), add the module built in step 1. After packaging the L2 transaction data and preparing to encapsulate it into the `calldata` of the L1 transaction, upload this part of the transaction data to the Meeda layer through the client, and use the positioning index (URI, such as CID, MID, commitment, etc.) returned after the upload is successful. The ID of the location data resource) is encapsulated into the `calldata` of the L1 transaction as a replacement, and the subsequent process remains unchanged.
-
-&nbsp;
 
 The impact of access on the original process is very small, because if an error occurs during the use of Meeda, it will automatically fallback back to the original process, and continue according to the original process. There is no need to adjust the parameters of the function or exit the process early. It is a noninvasive, nonaggressive implant.
 
@@ -105,7 +92,7 @@ func DataFromEVMTransactions(dsCfg DataSourceConfig, batcherAddr common.Address,
 }
 ```
 
-When the Meeda identification code is read in the `calldata` of the transaction sent to `BatchInboxAddress` (`case memo.DerivationVersionMemo:`), the client goes to the Meeda layer to obtain the original transaction data, and the subsequent process remains unchanged.
+When the Meeda identification code(`case memo.DerivationVersionMemo:`) is read in the `calldata` of the transaction sent to `BatchInboxAddress`, the client goes to the Meeda layer to obtain the original transaction data, and the subsequent process remains unchanged.
 
 You need to initialize a Meeda client for `op-node` at startup:
 

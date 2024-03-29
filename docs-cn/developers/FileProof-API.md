@@ -1,6 +1,8 @@
 # FileProof API
 
-### 1. addFile
+FileProof是Meeda DA层的合约实现。
+
+## 1. addFile
 
 `function addFile(bytes32[4] memory commitment, uint64 sizeByte, uint256 start, uint256 end, bytes memory credential)`
 
@@ -30,7 +32,7 @@ credential - 文件上传凭据，表明文件确实已上传到da-backend
 
 `event Transfer(address indexed from, address indexed to, uint256 value);`
 
-### 2. genRnd
+## 2. genRnd
 
 `function genRnd()`
 
@@ -48,7 +50,7 @@ credential - 文件上传凭据，表明文件确实已上传到da-backend
 
 `event NoProofs(uint256 oldLast, uint256 newLast, uint256 missedProfit);`
 
-### 3. submitProof
+## 3. submitProof
 
 `function submitProof(bytes32 _rnd, bytes32[4] memory _Cn, ProofInfo memory _Pn)`
 
@@ -92,7 +94,7 @@ struct ProofInfo {
 
 `event Transfer(address indexed from, address indexed to, uint256 value);`
 
-### 4. doChallenge
+## 4. doChallenge
 
 `function doChallenge(uint8 _chalIndex)`
 
@@ -116,7 +118,7 @@ _chaIndex - 指定被等分后的多个聚合承诺值的索引`Cn_i`，第一�
 
 `event Transfer(address indexed from, address indexed to, uint256 value);`
 
-### 5. responseChal
+## 5. responseChal
 
 `function responseChal(bytes32[4][10] memory _cns)`
 
@@ -138,7 +140,7 @@ _cns - 将被挑战的`Cn`等分
 
 `event Transfer(address indexed from, address indexed to, uint256 value);`
 
-### 6. oneStepProve
+## 6. oneStepProve
 
 `function oneStepProve(bytes32[4][] memory _commitments)`
 
@@ -162,7 +164,7 @@ _commitments- 被挑战的`Cn`的多个文件承诺值
 
 `event Transfer(address indexed from, address indexed to, uint256 value);`
 
-### 7. endChallenge
+## 7. endChallenge
 
 `function endChallenge()`
 
@@ -182,7 +184,7 @@ submitter没有及时响应挑战的情况下，将触发`Fraud`事件；否则�
 
 `event Transfer(address indexed from, address indexed to, uint256 value);`
 
-### 8. withdrawMissedProfit
+## 8. withdrawMissedProfit
 
 `function withdrawMissedProfit()`
 
@@ -194,7 +196,7 @@ submitter没有及时响应挑战的情况下，将触发`Fraud`事件；否则�
 
 `event Transfer(address indexed from, address indexed to, uint256 value);`
 
-### 9. alterSetting
+## 9. alterSetting
 
 `function alterSetting(IFileProof.SettingInfo memory si, bytes[5] memory signs)`
 
@@ -231,7 +233,7 @@ struct SettingInfo {
 
 `event AlterSetting(SettingInfo si);`
 
-### 10. selectFiles
+## 10. selectFiles
 
 `function selectFiles(uint256 i) external view returns (bytes32[4] memory commitment)`
 
@@ -243,7 +245,7 @@ struct SettingInfo {
 
 被挑选文件的总数由`SettingInfo.chalSum`决定。
 
-### 11. getCommit
+## 11. getCommit
 
 `function getCommit(uint256 i) external view returns (uint256 sum, bytes32[4] memory commitment)`
 
@@ -251,7 +253,7 @@ struct SettingInfo {
 
 根据序号，获取合约中上传文件的总数和对应的承诺值。
 
-### 12. getFileInfo
+## 12. getFileInfo
 
 `function getFileInfo(bytes memory commit) external view returns (uint64 index, uint256 expiration)`
 
@@ -259,7 +261,7 @@ struct SettingInfo {
 
 根据文件承诺值，获取文件的序号以及到期时间。
 
-### 13. getProofInfo
+## 13. getProofInfo
 
 `function getProofInfo() external view returns (bytes32 y)`
 
@@ -271,7 +273,7 @@ struct SettingInfo {
 
 可通过监控event获取历史证明信息，以及当前完整的证明信息。
 
-### 14. getVerifyInfo
+## 14. getVerifyInfo
 
 `function getVerifyInfo() external view returns (bytes32 rnd, bool lock, uint256 last)`
 
@@ -283,7 +285,7 @@ struct SettingInfo {
 
 可通过监控event获取历史验证信息，以及当前完整的验证信息。
 
-### 15. getProfitInfo
+## 15. getProfitInfo
 
 `function getProfitInfo() external view returns (uint256 pendingProfit, uint256 missedProfit, uint256 finalExpire)`
 
@@ -295,7 +297,7 @@ struct SettingInfo {
 
 可通过监控event获取历史收益信息。
 
-### 16. getChallengeInfo
+## 16. getChallengeInfo
 
 `function getChallengeInfo() external view returns (uint8 chalStatus, address challenger, uint8 chalIndex, uint256 startIndex, uint256 chalLength)`
 
@@ -307,7 +309,7 @@ struct SettingInfo {
 
 可通过监控event获取历史挑战信息，以及当前完整的挑战信息。
 
-### 17. getSettingInfo
+## 17. getSettingInfo
 
 `function getSettingInfo() external view returns (uint32 interval, uint32 period, uint32 chalSum, uint32 respondTime, uint64 price, address submitter, address receiver, address foundation, uint8 chalRewardRatio, uint256 chalPledge)`
 
@@ -319,7 +321,7 @@ struct SettingInfo {
 
 可通过监控event获取历史配置信息。
 
-### 18. getVK
+## 18. getVK
 
 `function getVK() external view returns (bytes32[8] memory vk)`
 

@@ -10,7 +10,7 @@ DA本意是指存储数据的可访问性，但是在以太坊中，DA有特定�
 
 3.What's Mefs?
 
-mefs是memelabs开发的一个低成本、可靠安全的分散式云存储系统，利用了边缘存储设备、以及区块链的不可篡改性和去中心化特性。具体信息可参考[Memolabs](https://memolabs.org/)。
+mefs是[Memolabs](https://memolabs.org/)开发的一个低成本、可靠安全的分散式云存储系统，利用了边缘存储设备、以及区块链的不可篡改性和去中心化特性。具体信息可参考[Memolabs](https://memolabs.org/)。
 
 4.What's Meeda?
 
@@ -18,4 +18,4 @@ Meeda是Memolabs为以太坊Layer2，尤其是Rollup推出的一种数据可用�
 
 5.How to combine Ethereum Layer2 with Meeda?
 
-具体请参考`Developers/How to connect L2 to Meeda`部分的内容。
+具体请参考`Node/Op Node & Meeda`和`Developers/Connect L2 to Meeda`部分的内容。

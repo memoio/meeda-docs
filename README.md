@@ -2,7 +2,7 @@
 
 Welcome to the official documentation repository for Meeda.
 
-Meeda is developed and maintained by [MemoLabs](https://memolabs.org/). Meeda provides data availability solutions for Ethereum Layer 2. 
+Meeda is developed and maintained by [MemoLabs](https://memolabs.org/). Meeda provides a data availability solution for Ethereum Layer 2. 
 
 ## Features
 
@@ -16,15 +16,15 @@ Meeda is developed and maintained by [MemoLabs](https://memolabs.org/). Meeda pr
 
 ## Directory Structure
 
-* docs/learn: Contains a detailed introduction to Meeda.
+* Learn: Contains a detailed introduction to Meeda.
 
-* docs/node: Deployment, configuration, and startup guidance for all nodes.
+* Node: Deployment, configuration, and startup guidance for all nodes.
 
-* docs/developers: Some interface documents and interaction documents.
+* Developers: Some interface, interaction, development design documents for developers.
 
-* docs/FAQ: Some common questions and answers.
+* FAQ: Some common questions and answers.
 
-* docs/community: Community links and some related resources links.
+* Community: Our community links and other resource links, welcome to communicate with us.
 
 * /images: Contains all images from this site.
 

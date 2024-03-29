@@ -10,12 +10,12 @@ DA originally meant the accessibility of stored data, but in Ethereum, DA has a 
 
 3.What's Mefs?
 
-Mefs is a low-cost, reliable and secure decentralized cloud storage system developed by memelabs, which takes advantage of edge storage devices and the non-tampering and decentralized characteristics of blockchain. For specific information, please refer to [Memolabs](https://memolabs.org/).
+Mefs is a low-cost, reliable and secure decentralized cloud storage system developed by Memolabs, which takes advantage of edge storage devices and the non-tampering and decentralized characteristics of blockchain. For specific information, please refer to [Memolabs](https://memolabs.org/).
 
 4.What's Meeda?
 
-Meeda is a data availability solution launched by Memolabs for Ethereum Layer 2, especially Rollup. It is low-cost, simple and efficient.
+Meeda is a data availability solution launched by Memolabs for Ethereum Layer 2, especially Rollup, it is low-cost, simple and efficient.
 
 5.How to combine Ethereum Layer2 with Meeda?
 
-For details, please refer to the `Developers/How to connect L2 to Meeda` section for details.
+For details, please refer to the `Node/Op Node & Meeda` and `Developers/Connect L2 to Meeda` sections for details.

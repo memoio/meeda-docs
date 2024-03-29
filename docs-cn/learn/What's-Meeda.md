@@ -2,7 +2,7 @@
 
 [Memolabs](https://memolabs.org/)推出了一种高效简洁的以太坊DA解决方案，为Layer2 Rollup等执行层提供了可靠的数据可用性保障。根据不同的成本选择，提供不同程度的可用性保障。
 
-这一方案被命名为Meeda。抽取MEMO、Ethereum、data availability中的字母，并且与Memolabs推出的比特币数据可用性解决方案Mooda进行联动，前两个字母共同组成MEMO（Memolabs推出的底层分散式云存储系统）。
+这一方案被命名为Meeda。抽取MEMO、Ethereum、data availability中的字母，并且与Memolabs推出的比特币数据可用性解决方案Mooda进行联动，前两个字母共同组成MEMO。
 
 ## DA问题
 
