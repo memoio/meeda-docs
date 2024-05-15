@@ -6,13 +6,13 @@ Meeda is developed and maintained by [MemoLabs](https://memolabs.org/). Meeda pr
 
 ## Features
 
-* Simple and efficient
+* Safe and reliable
 
 * High scalability
 
-* Safe and reliable
-
 * Low cost
+
+* Simple and efficient
 
 ## Directory Structure
 

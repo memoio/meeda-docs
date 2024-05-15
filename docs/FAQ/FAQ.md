@@ -2,7 +2,7 @@
 
 1.What's Data Availability(DA)?
 
-DA originally meant the accessibility of stored data, but in Ethereum, DA has a specific meaning. After Layer 2 of the Ethereum expansion plan executes a transaction and submits the transaction, the verification node needs to verify the transaction data, and only the transaction that passes the verification will be finalized by Layer 1. The premise of the verification process is to be able to access the transaction data. Therefore, the transaction data can be accessed by any node, thereby facilitating the process of verifying the correctness of the transaction. It is called Ethereum’s [Data Availability(DA)](https://ethereum.org/en/developers/docs/data-availability/).
+DA not only includes data storage, but also needs to ensure that any node can access the data. After Layer 2 Rollup, the Ethereum expansion solution, executes transactions and submits transactions, the verification node needs to verify the transaction data, and only the transactions that pass verification will be finalized by Layer 1. The premise of the verification process is to be able to access transaction data. Therefore, transaction data can be accessed by any node, thereby facilitating the process of verifying the correctness of transactions is called data availability. For more details, please refer to: https://ethereum.org/en/developers /docs/data-availability/.
 
 2.What's Memolabs?
 
@@ -14,7 +14,7 @@ Mefs is a low-cost, reliable and secure decentralized cloud storage system devel
 
 4.What's Meeda?
 
-Meeda is a data availability solution launched by Memolabs for Ethereum Layer 2, especially Rollup, it is low-cost, simple and efficient.
+Meeda is a data availability solution launched by Memolabs for Ethereum Layer 2, especially Optimistic Rollup, it is low-cost, safe and reliable.
 
 5.How to combine Ethereum Layer2 with Meeda?
 

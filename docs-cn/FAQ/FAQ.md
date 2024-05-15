@@ -2,7 +2,7 @@
 
 1.What's Data Availability(DA)?
 
-DA本意是指存储数据的可访问性，但是在以太坊中，DA有特定的含义。以太坊扩容方案Layer2执行交易、提交交易之后，验证节点需要对交易数据进行验证，验证通过的交易才会被Layer1最终确定。验证过程的前提就是能够访问交易数据，因此，交易数据可以被任意节点访问，从而便于验证交易正确性的过程就叫做以太坊的[数据可用性（DA）](https://ethereum.org/en/developers/docs/data-availability/).
+DA不仅仅包含数据的存储，还需要保证任意节点都能够访问数据。以太坊扩容方案Layer2 Rollup执行交易、提交交易之后，验证节点需要对交易数据进行验证，验证通过的交易才会被Layer1最终确定。验证过程的前提就是能够访问交易数据，因此，交易数据可以被任意节点访问，从而便于验证交易正确性的过程就叫做数据可用性，更多详情请参考：https://ethereum.org/en/developers/docs/data-availability/.
 
 2.What's Memolabs?
 
@@ -14,7 +14,7 @@ mefs是[Memolabs](https://memolabs.org/)开发的一个低成本、可靠安全�
 
 4.What's Meeda?
 
-Meeda是Memolabs为以太坊Layer2，尤其是Rollup推出的一种数据可用性解决方案，具有低成本、简洁高效的特点。
+Meeda是Memolabs为以太坊Layer2，尤其是Optimistic类的Rollup推出的一种数据可用性解决方案，具有低成本、安全可靠的特点。
 
 5.How to combine Ethereum Layer2 with Meeda?
 

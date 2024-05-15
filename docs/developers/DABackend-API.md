@@ -1,1 +1,0 @@
-# Meedada HTTP API

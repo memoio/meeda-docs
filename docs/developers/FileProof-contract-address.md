@@ -2,10 +2,11 @@
 
 contract address：
 
-| FileProofProxy       |   0xBC2BB92F589f332F07f7aE06d0f5080870CE0467  |
+| Contract             |               Address                         |
 | -------------------- | --- |
-| **FileProofControl** |   0x6C3F60480e7246EaE194f3F6512E49b392B76D7c  |
-| **FileProof**        |   0x7bf3C03fda919e4CfbB1FD79E815FAa51755720d  |
+| FileProofProxy       |   0xBC2BB92F589f332F07f7aE06d0f5080870CE0467  |
+| FileProofControl     |   0x6C3F60480e7246EaE194f3F6512E49b392B76D7c  |
+| FileProof            |   0x7bf3C03fda919e4CfbB1FD79E815FAa51755720d  |
 
 Notice:
 

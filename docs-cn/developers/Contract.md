@@ -1,6 +1,6 @@
-# 数据可用性（DA）层
+# 验证合约
 
-Meeda的DA层主要由FileProof实现。接下来将具体讲解FileProof的设计细节，以供开发者探讨。
+Meeda的验证合约主要由FileProof实现。接下来将具体讲解FileProof的设计细节，以供开发者探讨。
 
 ## 背景
 

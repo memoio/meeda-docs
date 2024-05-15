@@ -1,6 +1,6 @@
-# Data Availability Layer
+# Contract
 
-Meeda's DA layer is mainly implemented by FileProof. Next, the design details of FileProof will be explained in detail for developers to discuss.
+Meeda's verification contract is mainly implemented by FileProof. Next, the design details of FileProof will be explained in detail for developers to discuss.
 
 ## Background
 

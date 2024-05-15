@@ -1,6 +1,6 @@
 # resource
 
-Meeda is a project created by [MemoLabs](https://memolabs.org/) to provide data availability for Ethereum Layer2. Contains on-chain smart contract logic and off-chain client logic. Below are some of our resource links, welcome to communicate with us.
+Meeda is a project created by [MemoLabs](https://memolabs.org/) to provide data availability for Ethereum Layer2 Rollups. Below are some of our resource links, welcome to communicate with us.
 
 ## contact us
 
