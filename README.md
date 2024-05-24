@@ -32,6 +32,8 @@ Meeda is developed and maintained by [MemoLabs](https://memolabs.org/). Meeda pr
 
 This documentation website is built by [GitBook](https://www.gitbook.com/). Any modifications on github will be synchronized to gitbook, and modifications on gitbook will also be synchronized to github.
 
+[Meeda gitbook](https://memolabs.gitbook.io/meeda)
+
 We welcome community contributions!
 
 Please ensure to create a new branch for your changes and gives a correct and sufficient commit message before commit.
